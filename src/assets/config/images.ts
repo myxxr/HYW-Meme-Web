@@ -1,26 +1,7 @@
-export interface ImageItem {
-    img: string
-    title: string
-}
+const modules = import.meta.glob('../imgs/*.{png,jpg,jpeg,gif,webp}', {
+    eager: true,
+    import: 'default'
+});
 
-export const imageList: ImageItem[] = [
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-    { img: '/src/assets/imgs/01.jpg', title: '橘雪莉'},
-]
+// 让 TS 知道这些都是 string
+export const imageList = Object.values(modules) as string[];

@@ -2,12 +2,12 @@
     <div class="MeMe-Control">
         <div
                 class="MeMe-Item"
-                v-for="(item,idx) in imageList"
+                v-for="(img,idx) in imageList"
                 :style="{ animationDelay: idx * 0.25 + 's' }"
         >
             <div class="MeMe-Item-Box">
                 <div class="MeMe-Item-Img">
-                    <img :src="item.img" alt="">
+                    <img :src="img" alt="" loading="lazy">
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@ import {imageList} from "../assets/config/images.ts";
         grid-template-columns: repeat(5, 1fr);
     }
     @media (min-width: 1400px) {
-        grid-template-columns: repeat(6, 180px);
+        grid-template-columns: repeat(6, 1fr);
         justify-content: center;
     }
     .MeMe-Item {
@@ -55,6 +55,10 @@ import {imageList} from "../assets/config/images.ts";
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             background-color: rgba(255, 255, 255, 0.95);
+            @media (min-width: 768px) {
+                width: 200px;
+                height: 200px;
+            }
             .MeMe-Item-Img {
                 display: inline-flex;
                 width: auto;
@@ -66,7 +70,12 @@ import {imageList} from "../assets/config/images.ts";
                 img {
                     width: 140px;
                     height: auto;
+                    max-height: 140px;
                     z-index: 0;
+                    @media (min-width: 768px) {
+                        width: 160px;
+                        max-height: 160px;
+                    }
                 }
             }
         }
